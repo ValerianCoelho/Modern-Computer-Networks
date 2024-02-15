@@ -26,8 +26,8 @@ int main() {
     int i = gox.length() - 1;
     while (i < data.length()) {
         temp = temp[0] == '1'
-              ? XOR(temp, gox)
-              : temp.substr(1, temp.length()) + data[++i];
+              ? XOR(temp, gox) // XOR temp and g(x)
+              : temp.substr(1, temp.length()) + data[++i]; // remove fist leading zero and add one bit from data
     }
     data = data.substr(0, data.length() - temp.length() + 1) + temp; // replace added zero bits with temp
     cout << "Code Word : " << data;
