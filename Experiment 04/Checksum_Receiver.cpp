@@ -16,6 +16,16 @@ string compliment(string num) {
     return num_compliment;
 }
 
+// Function to find char in string
+int find(string text, char ch) {
+    for(int i=0; i < text.length(); i++) {
+        if(text[i] == ch) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 // Function to perform binary addition of two binary numbers
 string binary_addition(string num1, string num2) {
     int intsum, bitsum, carry = 0;
@@ -60,16 +70,13 @@ int main() {
         sum = binary_addition(sum, segments[i]);
     }
 
-    // Calculate 1's complement of the sum to get the checksum
-    string sum_compliment = compliment(sum);
-    segments[n] = sum_compliment;
-
-    // Output the segments including the checksum
-    for(int i=0; i<n+1; i++) {
-        cout << segments[i] << " ";
+    if(find(sum, '0') == -1) {
+        cout << "No Errors";
+    } else {
+        cout << "Error";
     }
     return 0;
 }
 
-// 10110011 10101011 01011010 11010101
-// 10110011101010110101101011010101
+// 10110011 10101011 01011010 11010101 01110000
+// 1011001110101011010110101101010101110000
