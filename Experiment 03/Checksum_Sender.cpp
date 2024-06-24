@@ -60,11 +60,16 @@ int main() {
         sum = binary_addition(sum, segments[i]);
     }
 
+    cout << "Sum : " << sum << endl;
+
     // Calculate 1's complement of the sum to get the checksum
     string sum_compliment = compliment(sum);
     segments[n] = sum_compliment;
 
+    cout << "checksum : " << sum_compliment << endl;
+
     // Output the segments including the checksum
+    cout << "codeword : " ;
     for(int i=0; i<n+1; i++) {
         cout << segments[i] << " ";
     }

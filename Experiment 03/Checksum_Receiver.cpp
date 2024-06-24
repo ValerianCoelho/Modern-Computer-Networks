@@ -69,11 +69,18 @@ int main() {
     for(int i=1; i<n; i++) {
         sum = binary_addition(sum, segments[i]);
     }
+    cout << "Sum : " << sum << endl;
 
-    if(find(sum, '0') == -1) {
-        cout << "No Errors";
+    // Calculate 1's complement of the sum to get the checksum
+    string sum_compliment = compliment(sum);
+    segments[n] = sum_compliment;
+
+    cout << "checksum : " << sum_compliment << endl;
+
+    if(find(sum_compliment, '1') == -1) {
+        cout << "There are no Errors";
     } else {
-        cout << "Error";
+        cout << "There is an Error";
     }
     return 0;
 }

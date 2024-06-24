@@ -10,22 +10,18 @@ string XOR(string num1, string num2) {
     return result;
 }
 
-int find(string text, char ch) {
-    for(int i=0; i < text.length(); i++) {
-        if(text[i] == ch) {
-            return i;
-        }
-    }
-    return -1;
-}
-
 int main() {
     string data, gox;
-    cout << "Enter the Recieved Code Word : ";
+    cout << "Sender Side" << endl;
+    cout << "Enter the data : ";
     cin >> data;
 
-    cout << "Enter g(x) : ";
+    cout << "Enter the key : ";
     cin >> gox;
+
+    for (int i = 0; i < gox.length() - 1; i++) {
+        data += '0';
+    }
 
     string temp = data.substr(0, gox.length());
     int i = gox.length() - 1;
@@ -33,12 +29,9 @@ int main() {
         temp = temp[0] == '1'
               ? XOR(temp, gox) // XOR temp and g(x)
               : temp.substr(1, temp.length()) + data[++i]; // remove fist leading zero and add one bit from data
-        cout << temp << endl;
     }
-    if(find(temp, '1') == -1) {
-        cout << "There is no Error in the data Received";
-    } else {
-        cout << "There is an Error in the Data Received";
-    }
+    cout << "CRC : " << temp << endl;
+    data = data.substr(0, data.length() - temp.length() + 1) + temp; // replace added zero bits with temp
+    cout << "Code Word : " << data;
     return 0;
 }
