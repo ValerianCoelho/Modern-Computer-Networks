@@ -59,10 +59,12 @@ int main() {
 
     // Split the data into segments
     int n = data.length() / segment_size;
-    string segments[n+1];
+    string segments[n];
     for(int i=0; i<n; i++) {
         segments[i] = data.substr(i*segment_size, segment_size);
     }
+
+    // cout << segments[n+1] << endl <<  endl;
 
     // Perform binary addition on all the segments to calculate checksum
     string sum = segments[0];
