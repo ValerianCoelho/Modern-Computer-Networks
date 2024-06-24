@@ -20,26 +20,18 @@ public class Client {
             // Send message to server and receive response
             while ((inputLine = stdIn.readLine()) != null) {
                 out.println(inputLine);
-                if ("bye".equalsIgnoreCase(inputLine)) {
+                if ("bye".equals(inputLine)) {
                     break;
                 }
 
                 outputLine = in.readLine();
                 System.out.println("Server: " + outputLine);
-                if ("bye".equalsIgnoreCase(outputLine)) {
+                if ("bye".equals(outputLine)) {
                     break;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (out != null) out.close();
-                if (in != null) in.close();
-                if (socket != null) socket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

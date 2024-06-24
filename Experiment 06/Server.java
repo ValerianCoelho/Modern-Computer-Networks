@@ -23,28 +23,19 @@ public class Server {
             // Read from client and respond
             while ((inputLine = in.readLine()) != null) {
                 System.out.println("Client: " + inputLine);
-                if ("bye".equalsIgnoreCase(inputLine)) {
+                if ("bye".equals(inputLine)) {
                     break;
                 }
 
                 System.out.print("Server: ");
                 outputLine = stdIn.readLine();
                 out.println(outputLine);
-                if ("bye".equalsIgnoreCase(outputLine)) {
+                if ("bye".equals(outputLine)) {
                     break;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (out != null) out.close();
-                if (in != null) in.close();
-                if (socket != null) socket.close();
-                if (serverSocket != null) serverSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
